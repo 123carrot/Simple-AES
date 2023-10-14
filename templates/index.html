@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title> Markpro - Digital Marketplace HTML Template </title>
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--=== Owl-Carousel ===-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <!--====== Magnific ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <!--===nice-select===-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
+    <!--====== Animate CSS ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <!--====== Font Awesome ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <!--====== Main Css ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!--====== Responsive Css ======-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+</head>
+
+<body>
+    <!--====== Preloader Start ======-->
+    <div id="preloader">
+        <div class="loader-cubes">
+            <div class="loader-cube1 loader-cube"></div>
+            <div class="loader-cube2 loader-cube"></div>
+            <div class="loader-cube4 loader-cube"></div>
+            <div class="loader-cube3 loader-cube"></div>
+        </div>
+    </div>
+    <!--====== Preloader End ======-->
+
+    <!--====== Header Part Start ======-->
+    <header class="header-two sticky-header">
+        <div class="header-navigation">
+
+            <div class="container-fluid d-flex align-items-center justify-content-between container-1470">
+                <div class="header-left">
+                    <div class="site-logo">
+                        <img src="static/picture/logo.png" >
+                    </div>
+                </div>
+                <div class="header-right d-flex align-items-center justify-content-end">
+                    <div class="site-nav-menu">
+                        <ul class="primary-menu">
+                            <li class="current">
+                            </li>
+                            <li>
+                                <a  href="/" >16-bit加密</a>
+                            </li>
+                            <li>
+                                <a href="/str">字符串加密</a>
+                            </li>
+                            <li>
+                                <a  href="/file">文件加密</a>
+                            </li>
+                            <li>
+                                <a href="/slove">相遇攻击</a>
+                            </li>
+                        </ul>
+                        <a href="#0" class="nav-close"><i class="fal fa-times"></i></a>
+                    </div>
+            </div>
+        </div>
+        </div>
+
+    </header>
+    <!--====== Header Part End ======-->
+
+     <!--====== Banner Start ======-->
+    <div class="banner two"></div>
+    <!--====== Banner End ======-->
+<div class="contact-from">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div style="display: flex;">
+                    <form class="blog-form" method="post" action="index.html" style="flex: 1;">
+                        <div class="row">
+                            <div class="col-lg-12  wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="form-group">
+                                    <input type="text" placeholder="请输入16-bit明文/密文" required="" id="mingwen">
+                                </div>
+                            </div>
+                            <div class="col-lg-12  wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="form-group">
+                                    <input type="text" placeholder="请输入16-bit密钥" required="" id="miyao">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="form-group">
+                                    <textarea placeholder="加/解密结果将在此显示" required="" id="result" readonly></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <input class="chose-box" type="radio" name="options" id="S-AES" required checked>
+                                        <label for="option1">S-AES</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="chose-box" type="radio" name="options" id="2-AES" required>
+                                        <label for="option2">2-AES</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="chose-box" type="radio" name="options" id="3-AES" required>
+                                        <label for="option3">3-AES</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12  wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="form-group m-0 buttonn" style="display: flex; justify-content: space-between;">
+                                    <button id="start-button" class="button main-btn" type="button" onclick="start()">加密！</button>
+                                    <button id="start-button" class="button main-btn" type="button" onclick="dec()">解密！</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <img src="../static/picture/algorithm.png"  style="width: 60%; height: auto;">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<script>
+function start() {
+    const mingwen = document.getElementById("mingwen").value;
+    const miyao = document.getElementById("miyao").value;
+    var options = document.getElementsByName('options');
+    var option;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+            option = '' + options[i].id;
+        }
+    }
+    var regex = /^[01]{16}$/;
+    var regex2 = /^[01]{16}$/;
+    var regex3 = /^[01]{32}$/;
+
+    if (!regex.test(mingwen)) {
+        alert('输入必须是由16位的0或1组成的字符串！');
+        return;
+    }
+    if(option!=='S-AES'){
+        if(!regex3.test(miyao)){
+            alert('密钥必须是由32位的0或1组成的字符串！');
+            return;
+        }
+    }
+    else if(!regex2.test(miyao)) {
+        alert('密钥必须是由16位的0或1组成的字符串！');
+        return;
+    }
+
+    fetch('/index/start', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'mingwen': mingwen,
+            'miyao': miyao,
+            'options':option
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").value = data.result;
+    });
+}
+
+function dec() {
+    const mingwen = document.getElementById("mingwen").value;
+    const miyao = document.getElementById("miyao").value;
+    var options = document.getElementsByName('options');
+    var option;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+            option = '' + options[i].id;
+        }
+    }
+    var regex = /^[01]{16}$/;
+    var regex2 = /^[01]{16}$/;
+    var regex3 = /^[01]{32}$/;
+
+    if (!regex.test(mingwen)) {
+        alert('输入必须是由16位的0或1组成的字符串！');
+        return;
+    }
+    if(option!=='S-AES'){
+        if(!regex3.test(miyao)){
+            alert('密钥必须是由32位的0或1组成的字符串！');
+            return;
+        }
+    }
+    else if(!regex2.test(miyao)) {
+        alert('密钥必须是由16位的0或1组成的字符串！');
+        return;
+    }
+    fetch('/index/dec8', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'mingwen': mingwen,
+            'miyao': miyao,
+            'options': option
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").value = data.result;
+    });
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--====== Back to top start ======-->
+    <div class="back-to-top">
+        <a href="#0"> <i class="fas fa-arrow-up"></i> </a>
+    </div>
+    <!--====== Back to top start ======-->
+
+<!--====== Jquery ======-->
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+<!--====== Bootstrap ======-->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<!--=== Owl-Carousel ===-->
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<!--====== Nice Select ======-->
+<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+<!--====== Magnific ======-->
+<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+<!--====== Wow ======-->
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<!--====== Main JS ======-->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
